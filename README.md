@@ -275,15 +275,6 @@ sudo pkill -f "enforcer.daemon"
 echo '12345' | sudo -S bash scripts/start_stack.sh
 ```
 
-**Device shows 0.0 Mbps:** that is the honest idle value. Check the device is
-actually online (`ping <ip>`, `ip neigh show`) and generating traffic; rates
-appear within one slow tick (~30 s).
-
-**Phone traffic not visible:** the ARP redirect must be running
-(`ps aux | grep eb_arp_redirect`) and the phone connected to the hotspot. The
-redirect targets 192.168.1.2 / bc:a8:a6:c4:76:c9 — edit the arguments if the
-phone's IP/MAC changed.
-
 **Frontend port busy / stale build:** the Vite dev server hot-reloads from
 `frontend/src` — no rebuild needed. If :8443 is stuck, kill the PID in
 `/tmp/eb-pids/frontend` and re-run the stack script.
